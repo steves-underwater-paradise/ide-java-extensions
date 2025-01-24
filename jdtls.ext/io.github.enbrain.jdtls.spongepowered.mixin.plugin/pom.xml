@@ -13,7 +13,17 @@
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm</artifactId>
-      <version>9.3</version>
+      <version>9.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jdt</groupId>
+      <artifactId>org.eclipse.jdt.core</artifactId>
+      <version>3.40.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jdt.ls</groupId>
+      <artifactId>org.eclipse.jdt.ls.core</artifactId>
+      <version>1.43.0.20241219145916</version>
     </dependency>
   </dependencies>
   <build>
@@ -27,7 +37,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.6.0</version>
         <executions>
           <execution>
             <phase>package</phase>

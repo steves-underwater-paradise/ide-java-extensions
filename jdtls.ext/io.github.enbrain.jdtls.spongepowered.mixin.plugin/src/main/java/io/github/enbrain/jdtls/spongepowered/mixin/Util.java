@@ -29,7 +29,7 @@ public final class Util {
     private Util() {
     }
 
-    public static final String JAVA_VERSION = JavaCore.VERSION_18;
+    public static final String JAVA_VERSION = JavaCore.VERSION_21;
 
     public static final int ASM_VERSION = Opcodes.ASM9;
 

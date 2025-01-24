@@ -9,7 +9,7 @@
   <properties>
     <base.name>JDTLS Spongepowered Mixin Extension</base.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <tycho-version>2.7.3</tycho-version>
+    <tycho-version>4.0.10</tycho-version>
   </properties>
   <modules>
     <module>io.github.enbrain.jdtls.spongepowered.mixin.plugin</module>
@@ -29,12 +29,16 @@
     <repository>
       <id>202209</id>
       <layout>p2</layout>
-      <url>https://download.eclipse.org/releases/2022-09/202209021000/</url>
+      <url>https://download.eclipse.org/releases/2025-03/202501101000/</url>
     </repository>
     <repository>
       <id>JDT.LS</id>
       <layout>p2</layout>
       <url>https://download.eclipse.org/jdtls/snapshots/repository/latest/</url>
+    </repository>
+    <repository>
+      <id>eclipse-releases</id>
+      <url>https://repo.eclipse.org/content/groups/releases/</url>
     </repository>
   </repositories>
 </project>
