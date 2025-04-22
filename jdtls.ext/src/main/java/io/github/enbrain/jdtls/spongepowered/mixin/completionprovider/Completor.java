@@ -8,5 +8,5 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import io.github.enbrain.jdtls.spongepowered.mixin.CompletionItem;
 
 public interface Completor {
-    public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException;
+	public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException;
 }

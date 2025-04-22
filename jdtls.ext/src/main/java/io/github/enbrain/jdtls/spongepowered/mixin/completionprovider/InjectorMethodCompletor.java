@@ -20,51 +20,48 @@ import io.github.enbrain.jdtls.spongepowered.mixin.Util;
  * Provides completion items for {@code @Inject(method = "...")}.
  */
 public class InjectorMethodCompletor implements Completor {
-    @Override
-    public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
-        List<CompletionItem> result = new ArrayList<>();
+	@Override
+	public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
+		List<CompletionItem> result = new ArrayList<>();
 
-        if (current instanceof StringLiteral) {
-            Annotation injectorAnnotation = Util.getAnnotationFromMember(current.getParent(), "method");
-            if (injectorAnnotation != null) {
-                ITypeBinding injectorBinding = injectorAnnotation.getTypeName().resolveTypeBinding();
-                if (injectorBinding != null) {
-                    String injectorName = injectorBinding.getQualifiedName();
-                    if (Util.INJECTORS.contains(injectorName)) {
-                        for (IType targetClass : Util.getTargetClasses(root, injectorAnnotation)) {
-                            List<BinaryMethod> binaryMethods = new ArrayList<>();
-                            for (IMethod method : targetClass.getMethods()) {
-                                if (method instanceof BinaryMethod binaryMethod) {
-                                    binaryMethods.add(binaryMethod);
-                                }
-                            }
-                            for (BinaryMethod targetMethod : binaryMethods) {
-                                boolean fullName = false;
-                                for (BinaryMethod targetMethod2 : binaryMethods) {
-                                    fullName |= getName(targetMethod).equals(getName(targetMethod2))
-                                            && !getFullName(targetMethod).equals(getFullName(targetMethod2));
-                                }
+		if (current instanceof StringLiteral) {
+			Annotation injectorAnnotation = Util.getAnnotationFromMember(current.getParent(), "method");
+			if (injectorAnnotation != null) {
+				ITypeBinding injectorBinding = injectorAnnotation.getTypeName().resolveTypeBinding();
+				if (injectorBinding != null) {
+					String injectorName = injectorBinding.getQualifiedName();
+					if (Util.INJECTORS.contains(injectorName)) {
+						for (IType targetClass : Util.getTargetClasses(root, injectorAnnotation)) {
+							List<BinaryMethod> binaryMethods = new ArrayList<>();
+							for (IMethod method : targetClass.getMethods()) {
+								if (method instanceof BinaryMethod binaryMethod) {
+									binaryMethods.add(binaryMethod);
+								}
+							}
+							for (BinaryMethod targetMethod : binaryMethods) {
+								boolean fullName = false;
+								for (BinaryMethod targetMethod2 : binaryMethods) {
+									fullName |= getName(targetMethod).equals(getName(targetMethod2)) && !getFullName(targetMethod).equals(getFullName(targetMethod2));
+								}
 
-                                result.add(
-                                        new CompletionItem(fullName ? getFullName(targetMethod) : getName(targetMethod),
-                                                Util.METHOD_ITEM));
-                            }
-                        }
-                    }
-                }
-            }
-        }
+								result.add(new CompletionItem(fullName ? getFullName(targetMethod) : getName(targetMethod), Util.METHOD_ITEM));
+							}
+						}
+					}
+				}
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    private static String getFullName(BinaryMethod method) throws JavaModelException {
-        IBinaryMethod info = (IBinaryMethod) method.getElementInfo();
-        String descriptor = new String(info.getMethodDescriptor());
-        return getName(method) + descriptor;
-    }
+	private static String getFullName(BinaryMethod method) throws JavaModelException {
+		IBinaryMethod info = (IBinaryMethod) method.getElementInfo();
+		String descriptor = new String(info.getMethodDescriptor());
+		return getName(method) + descriptor;
+	}
 
-    private static String getName(BinaryMethod method) throws JavaModelException {
-        return method.isConstructor() ? "<init>" : method.getElementName();
-    }
+	private static String getName(BinaryMethod method) throws JavaModelException {
+		return method.isConstructor() ? "<init>" : method.getElementName();
+	}
 }

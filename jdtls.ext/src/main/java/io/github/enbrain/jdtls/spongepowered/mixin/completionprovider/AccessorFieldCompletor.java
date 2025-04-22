@@ -11,18 +11,18 @@ import io.github.enbrain.jdtls.spongepowered.mixin.Util;
  * Provides completion items for {@code @Accessor(value = "...")}.
  */
 public class AccessorFieldCompletor extends AccessorOrInvokerMemberCompletor {
-    @Override
-    protected String getAnnotationClassName() {
-        return Util.ACCESSOR_ANNOTATION;
-    }
+	@Override
+	protected String getAnnotationClassName() {
+		return Util.ACCESSOR_ANNOTATION;
+	}
 
-    @Override
-    protected List<String> collectMembers(List<IType> targetClasses) throws JavaModelException {
-        return Util.collectFields(targetClasses);
-    }
+	@Override
+	protected List<String> collectMembers(List<IType> targetClasses) throws JavaModelException {
+		return Util.collectFields(targetClasses);
+	}
 
-    @Override
-    protected int getCompletionItemKind() {
-        return Util.FIELD_ITEM;
-    }
+	@Override
+	protected int getCompletionItemKind() {
+		return Util.FIELD_ITEM;
+	}
 }

@@ -16,26 +16,26 @@ import io.github.enbrain.jdtls.spongepowered.mixin.Util;
  * Provides completion items for {@code @At(value = "...")}.
  */
 public class InjectionPointTypeCompletor implements Completor {
-    @Override
-    public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
-        List<CompletionItem> result = new ArrayList<>();
+	@Override
+	public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
+		List<CompletionItem> result = new ArrayList<>();
 
-        if (current instanceof StringLiteral) {
-            Annotation annotation = Util.getAnnotationFromMember(current.getParent(), "value");
-            if (annotation != null) {
-                ITypeBinding annotationType = annotation.getTypeName().resolveTypeBinding();
-                if (annotationType != null) {
-                    String annotationName = annotationType.getQualifiedName();
+		if (current instanceof StringLiteral) {
+			Annotation annotation = Util.getAnnotationFromMember(current.getParent(), "value");
+			if (annotation != null) {
+				ITypeBinding annotationType = annotation.getTypeName().resolveTypeBinding();
+				if (annotationType != null) {
+					String annotationName = annotationType.getQualifiedName();
 
-                    if (annotationName.equals(Util.INJECTION_POINT_ANNOTATION)) {
-                        for (String injectionPointType : Util.INJECTION_POINT_TYPES) {
-                            result.add(new CompletionItem(injectionPointType, Util.VALUE_ITEM));
-                        }
-                    }
-                }
-            }
-        }
+					if (annotationName.equals(Util.INJECTION_POINT_ANNOTATION)) {
+						for (String injectionPointType : Util.INJECTION_POINT_TYPES) {
+							result.add(new CompletionItem(injectionPointType, Util.VALUE_ITEM));
+						}
+					}
+				}
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 }

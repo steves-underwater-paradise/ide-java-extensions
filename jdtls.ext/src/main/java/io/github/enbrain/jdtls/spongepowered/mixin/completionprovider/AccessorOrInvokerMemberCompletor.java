@@ -14,32 +14,32 @@ import io.github.enbrain.jdtls.spongepowered.mixin.CompletionItem;
 import io.github.enbrain.jdtls.spongepowered.mixin.Util;
 
 public abstract class AccessorOrInvokerMemberCompletor implements Completor {
-    @Override
-    public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
-        List<CompletionItem> result = new ArrayList<>();
+	@Override
+	public List<CompletionItem> complete(ASTNode root, ASTNode current) throws JavaModelException {
+		List<CompletionItem> result = new ArrayList<>();
 
-        if (current instanceof StringLiteral) {
-            Annotation annotation = Util.getAnnotationFromMember(current.getParent(), "value");
-            if (annotation != null) {
-                ITypeBinding annotationType = annotation.getTypeName().resolveTypeBinding();
-                if (annotationType != null) {
-                    String annotationName = annotationType.getQualifiedName();
-                    if (annotationName.equals(this.getAnnotationClassName())) {
-                        List<IType> targetClasses = Util.getTargetClasses(root, annotation);
-                        for (String member : this.collectMembers(targetClasses)) {
-                            result.add(new CompletionItem(member, this.getCompletionItemKind()));
-                        }
-                    }
-                }
-            }
-        }
+		if (current instanceof StringLiteral) {
+			Annotation annotation = Util.getAnnotationFromMember(current.getParent(), "value");
+			if (annotation != null) {
+				ITypeBinding annotationType = annotation.getTypeName().resolveTypeBinding();
+				if (annotationType != null) {
+					String annotationName = annotationType.getQualifiedName();
+					if (annotationName.equals(this.getAnnotationClassName())) {
+						List<IType> targetClasses = Util.getTargetClasses(root, annotation);
+						for (String member : this.collectMembers(targetClasses)) {
+							result.add(new CompletionItem(member, this.getCompletionItemKind()));
+						}
+					}
+				}
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    protected abstract String getAnnotationClassName();
+	protected abstract String getAnnotationClassName();
 
-    protected abstract List<String> collectMembers(List<IType> targetClasses) throws JavaModelException;
+	protected abstract List<String> collectMembers(List<IType> targetClasses) throws JavaModelException;
 
-    protected abstract int getCompletionItemKind();
+	protected abstract int getCompletionItemKind();
 }
