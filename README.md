@@ -1,6 +1,15 @@
-# Visual Studio Code Java Extensions
+# IDE Java Extensions
 
-Various Visual Studio Code extensions for Java language (and Spongepowered Mixin/Minecraft) support.
+Various IDE extensions for Java language (and Spongepowered Mixin/Minecraft) support.
+
+Supported IDEs:
+
+- [Visual Studio Code](https://code.visualstudio.com)
+
+In development:
+
+- [NeoVim](https://neovim.io)
+- [Zed](https://zed.dev)
 
 ## Extensions
 
@@ -14,19 +23,19 @@ Various Visual Studio Code extensions for Java language (and Spongepowered Mixin
 
 ## Download
 
-[![GitHub](https://github.com/intergrav/devins-badges/raw/2dc967fc44dc73850eee42c133a55c8ffc5e30cb/assets/cozy/available/github_vector.svg)](https://github.com/steves-underwater-paradise/vscode-java-extensions/releases)
+[![GitHub](https://github.com/intergrav/devins-badges/raw/2dc967fc44dc73850eee42c133a55c8ffc5e30cb/assets/cozy/available/github_vector.svg)](https://github.com/steves-underwater-paradise/ide-java-extensions/releases)
 
 TODO: Upload the extensions to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com) and the [Open VSX Registry](https://open-vsx.org)
 
 ## Contributing
 
 If you've encountered a problem or you want to suggest
-features, [create an issue](https://github.com/steves-underwater-paradise/vscode-java-extensions/issues/new) on the issue tracker.
+features, [create an issue](https://github.com/steves-underwater-paradise/ide-java-extensions/issues/new) on the issue tracker.
 
 ### Development
 
-- `git clone https://github.com/steves-underwater-paradise/vscode-java-extensions.git`
-- `cd vscode-java-extensions`
+- `git clone https://github.com/steves-underwater-paradise/ide-java-extensions.git`
+- `cd ide-java-extensions`
 - `./gradlew build`
 
 ## Attribution
