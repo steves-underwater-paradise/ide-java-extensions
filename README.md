@@ -10,7 +10,7 @@ Various Visual Studio Code extensions for Java language (and Spongepowered Mixin
 
 ## Showcase
 
-![Intellisense](images/intellisense.png)
+![Visual Studio Code Intellisense](docs/media/visual_studio_code_intellisense_example.png)
 
 ## Download
 
