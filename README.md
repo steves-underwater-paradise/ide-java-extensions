@@ -12,6 +12,12 @@ Various Visual Studio Code extensions for Java language (and Spongepowered Mixin
 
 ![Intellisense](images/intellisense.png)
 
+## Download
+
+[![GitHub](https://github.com/intergrav/devins-badges/raw/2dc967fc44dc73850eee42c133a55c8ffc5e30cb/assets/cozy/available/github_vector.svg)](https://github.com/steves-underwater-paradise/vscode-java-extensions/releases)
+
+TODO: Upload the extensions to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com) and the [Open VSX Registry](https://open-vsx.org)
+
 ## Contributing
 
 If you've encountered a problem or you want to suggest
