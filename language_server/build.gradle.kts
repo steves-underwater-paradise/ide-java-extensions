@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     val ow2_asm_version: String by project
-    api("org-ow2-asm-asm:asm:${ow2_asm_version}")
+    api("org.ow2.asm:asm:${ow2_asm_version}")
     val jdt_core_version: String by project
     api("org.eclipse.jdt:org.eclipse.jdt.core:${jdt_core_version}")
     val jdt_ls_core_version: String by project
