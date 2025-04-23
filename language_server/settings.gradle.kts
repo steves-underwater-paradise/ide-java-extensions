@@ -1,4 +1,4 @@
-rootProject.name = "jdtls.ext"
+rootProject.name = "language_server"
 
 pluginManagement {
 	repositories {
