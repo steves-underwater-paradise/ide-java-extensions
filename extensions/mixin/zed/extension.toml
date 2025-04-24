@@ -1,0 +1,11 @@
+schema_version = 1
+id = "mixin"
+name = "Spongepowered Mixin"
+description = "Provides support for Spongepowered Mixin."
+authors = ["Steveplays28"]
+repository = "https://github.com/steves-underwater-paradise/ide-java-extensions/tree/main/extensions/mixin/zed"
+version = "0.0.1"
+
+[language_servers.java]
+name = "Mixin JDT LSP"
+languages = ["Java"]

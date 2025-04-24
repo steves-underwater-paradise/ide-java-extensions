@@ -1,0 +1,10 @@
+[package]
+name = "mixin"
+version = "0.0.1"
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.4"
