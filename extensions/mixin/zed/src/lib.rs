@@ -47,9 +47,14 @@ impl Mixin {
             if let Ok(eclipse_jdt_language_server_lsp_settings) =
                 eclipse_jdt_language_server_lsp_settings
             {
-                let mut initialization_options = eclipse_jdt_language_server_lsp_settings
-                    .initialization_options
-                    .expect("the initialization options should have a value");
+                let mut initialization_options =
+                    eclipse_jdt_language_server_lsp_settings.initialization_options;
+                if initialization_options.is_none() {
+                    initialization_options = Some(json!("[]"))
+                }
+
+                let mut initialization_options =
+                    initialization_options.expect("the initialization options should have a value");
                 let bundles = initialization_options.get_mut("bundles");
                 match bundles {
                     Some(bundles) => bundles
