@@ -22,17 +22,30 @@ publishing {
 }
 
 repositories {
-    maven(url = "https://download.eclipse.org/releases/2025-03/202501101000/")
-    maven(url = "https://download.eclipse.org/jdtls/snapshots/repository/latest/")
-    maven(url = "https://repo.eclipse.org/content/groups/releases/")
     maven(url = "https://repo.maven.apache.org/maven2/")
+
+    flatDir {
+        dirs = setOf(rootProject.file("libraries/"))
+    }
 }
 
 dependencies {
     val ow2_asm_version: String by project
     api("org.ow2.asm:asm:${ow2_asm_version}")
+    val osgi_framework_version: String by project
+    api(("org.osgi:org.osgi.framework:${osgi_framework_version}"))
+    val eclipse_core_runtime_version: String by project
+    api("blank:org.eclipse.core.runtime_${eclipse_core_runtime_version}")
+    val eclipse_equinox_common_version: String by project
+    api("blank:org.eclipse.equinox.common_${eclipse_equinox_common_version}")
+    val eclipse_core_resources_version: String by project
+    api("blank:org.eclipse.core.resources_${eclipse_core_resources_version}")
+    val eclipse_text_version: String by project
+    api("blank:org.eclipse.text_${eclipse_text_version}")
     val jdt_core_version: String by project
-    api("org.eclipse.jdt:org.eclipse.jdt.core:${jdt_core_version}")
+    api("blank:org.eclipse.jdt.core_${jdt_core_version}")
+    val jdt_core_compiler_version: String by project
+    api("blank:org.eclipse.jdt.core.compiler.batch_${jdt_core_compiler_version}")
     val jdt_ls_core_version: String by project
-    api("org.eclipse.jdt.ls:org.eclipse.jdt.ls.core:${jdt_ls_core_version}")
+    api("blank:org.eclipse.jdt.ls.core_${jdt_ls_core_version}")
 }
